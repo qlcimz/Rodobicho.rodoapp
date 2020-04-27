@@ -27,19 +27,37 @@
         android:gravity="center">
 
         <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            android:id="@+id/foto1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="1" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/foto2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/foto3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="1" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_foto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_launcher_background" />
-
+            android:text="Adicionar Foto" />
     </TableRow>
 
     <TableRow
