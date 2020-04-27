@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bkg_main"
+    tools:context=".MainActivity">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="114dp">
+
+        <TextView
+            android:id="@+id/Rodobicho"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="70dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Rodobicho"
+            android:textColor="#186013"
+            android:textStyle="bold"
+            android:textSize="36sp" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/img_logo" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/btn_novaocorrencia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:srcCompat="@mipmap/btn_novaocorrencia" />
+
+        <ImageButton
+            android:id="@+id/btn_visualizarocorrencias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:srcCompat="@mipmap/btn_visualizarocorrencias" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/btn_entrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:srcCompat="@mipmap/btn_entrar" />
+
+        <ImageButton
+            android:id="@+id/btn_sobre"
+            android:layout_width="151dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:srcCompat="@mipmap/btn_sobre" />
+
+    </TableRow>
+</TableLayout>
