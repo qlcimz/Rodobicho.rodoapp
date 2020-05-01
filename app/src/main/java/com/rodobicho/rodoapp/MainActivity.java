@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btn_entrar = (ImageButton)findViewById(R.id.btn_entrar);
         ImageButton btn_visualizarocorrencias = (ImageButton)findViewById(R.id.btn_visualizarocorrencias);
         ImageButton btn_sobre = (ImageButton)findViewById(R.id.btn_sobre);
+        ImageButton btn_cadastrar = (ImageButton)findViewById(R.id.btn_cadastrar);
 
         btn_novaocorrencia.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +50,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, SobreActivity.class));
+            }
+        });
+
+        btn_cadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, CadastrarActivity.class));
             }
         });
 

@@ -19,7 +19,7 @@ public class CadastrarActivity extends AppCompatActivity {
         btn_voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(CadastrarActivity.this, EntrarActivity.class));
+                startActivity(new Intent(CadastrarActivity.this, MainActivity.class));
             }
         });
     }

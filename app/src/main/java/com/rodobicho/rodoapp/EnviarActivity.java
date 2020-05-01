@@ -45,7 +45,7 @@ import java.util.List;
 public class EnviarActivity extends AppCompatActivity implements LocationListener {
     private LocationManager locationManager;
     private TextView textView;
-    private Button btn_foto;
+    private ImageButton btn_tirarfoto;
     private ImageView foto1, foto2, foto3;
     private String json;
     private final String WS_URL = "http://10.0.2.2:8080/incendio/ocorrenciaController/inserir";
@@ -72,13 +72,13 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         textView = (TextView) findViewById(R.id.id_textViewLATLONG);
 
         // Declaração para o uso da câmera
-        btn_foto = findViewById(R.id.btn_foto);
+        btn_tirarfoto = findViewById(R.id.btn_tirarfoto);
         foto1 = findViewById(R.id.foto1);
         foto2 = findViewById(R.id.foto2);
         foto3 = findViewById(R.id.foto3);
 
         // Usando a câmera
-        btn_foto.setOnClickListener(new View.OnClickListener() {
+        btn_tirarfoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 askCameraPermission();
@@ -211,7 +211,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
 //                image2 = baos.toByteArray();
             } else if (hasImage(foto3) == false) {
                 foto3.setImageBitmap(foto);
-                btn_foto.setEnabled(false);
+                btn_tirarfoto.setEnabled(false);
 //                Bitmap bitmap3 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
 //                ByteArrayOutputStream baos = new ByteArrayOutputStream();
 //                bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos);
