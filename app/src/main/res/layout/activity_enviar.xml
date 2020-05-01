@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".EnviarActivity">
 
     <TableRow
@@ -17,7 +18,8 @@
             android:layout_marginTop="30dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Enviar Nova Ocorrência" />
+            android:text="Enviar Nova Ocorrência"
+            android:textColor="#000000"/>
     </TableRow>
 
     <TableRow
@@ -47,17 +49,29 @@
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent"
+        android:layout_width="429dp"
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:gravity="center">
 
-        <Button
-            android:id="@+id/btn_foto"
+        <ImageButton
+            android:id="@+id/btn_tirarfoto"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:srcCompat="@mipmap/btn_tirarfoto"
+            android:background="@null"/>
+
+        <ImageButton
+            android:id="@+id/btn_apagartudo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Adicionar Foto" />
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:srcCompat="@mipmap/btn_apagartudo"
+            android:background="@null"/>
     </TableRow>
 
     <TableRow
@@ -72,7 +86,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="Descrição: " />
+            android:text="Descrição: "
+            android:textColor="#000000"/>
 
         <EditText
             android:id="@+id/edt_descricao"
@@ -93,7 +108,8 @@
             android:id="@+id/id_textViewLATLONG"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello world" />
+            android:text="Hello world"
+            android:textColor="#000000"/>
 
         <ImageButton
             android:id="@+id/btn_salvar"

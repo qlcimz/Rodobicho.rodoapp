@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".EntrarActivity">
 
     <TableRow
@@ -18,7 +19,8 @@
             android:layout_marginBottom="20dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Acessar sua conta" />
+            android:text="Acessar sua conta"
+            android:textColor="#000000"/>
     </TableRow>
 
     <TableRow
@@ -34,7 +36,8 @@
                 android:id="@+id/txt_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="E-mail" />
+                android:text="E-mail"
+                android:textColor="#000000"/>
 
             <EditText
                 android:id="@+id/edt_email"
@@ -64,7 +67,8 @@
                 android:id="@+id/txt_senha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Senha" />
+                android:text="Senha"
+                android:textColor="#000000"/>
 
             <EditText
                 android:id="@+id/edt_password"
@@ -98,17 +102,8 @@
 
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
-        android:gravity="center">
-
-        <ImageButton
-            android:id="@+id/btn_cadastrar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            app:srcCompat="@mipmap/btn_cadastrar" />
-    </TableRow>
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
 
     <TableRow
         android:layout_width="match_parent"

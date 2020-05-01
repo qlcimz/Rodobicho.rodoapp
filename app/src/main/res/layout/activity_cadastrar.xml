@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".CadastrarActivity">
 
     <TableRow
@@ -18,7 +19,8 @@
             android:layout_marginBottom="20dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Novo Cadastro" />
+            android:text="Novo Cadastro"
+            android:textColor="#000000"/>
     </TableRow>
 
     <TableRow
@@ -31,7 +33,8 @@
             android:id="@+id/txt_nome"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Nome" />
+            android:text="Nome"
+            android:textColor="#000000"/>
 
     </TableRow>
 
@@ -60,7 +63,8 @@
             android:id="@+id/text_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="E-Mail" />
+            android:text="E-Mail"
+            android:textColor="#000000"/>
 
     </TableRow>
 
@@ -76,7 +80,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#000000"/>
     </TableRow>
 
     <TableRow
@@ -89,6 +94,7 @@
             android:id="@+id/txt_senha"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textColor="#000000"
             android:text="Senha" />
 
     </TableRow>
@@ -105,7 +111,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="#000000"/>
     </TableRow>
 
     <TableRow
@@ -118,7 +125,8 @@
             android:id="@+id/txt_csenha"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Confirmar senha" />
+            android:text="Confirmar senha"
+            android:textColor="#000000"/>
 
     </TableRow>
 
