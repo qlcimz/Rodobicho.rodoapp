@@ -9,6 +9,7 @@ public class Ocorrencia {
     private List<Foto> fotos;
     private Date data;
     private String descricao;
+    private Local local;
 
     public Long getId() {
         return id;
@@ -45,10 +46,9 @@ public class Ocorrencia {
     @Override
     public String toString() {
         return "Ocorrencia{" +
-                "id=" + id +
+                "descricao='" + descricao + '\'' +
+                ", local=" + local +
                 ", fotos=" + fotos +
-                ", data=" + data +
-                ", descricao='" + descricao + '\'' +
                 '}';
     }
 }
