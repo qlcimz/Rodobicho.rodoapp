@@ -49,8 +49,6 @@
             android:id="@+id/btn_novaocorrencia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
             android:background="@null"
             app:srcCompat="@mipmap/btn_novaocorrencia" />
 
@@ -58,8 +56,6 @@
             android:id="@+id/btn_visualizarocorrencias"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
             android:background="@null"
             app:srcCompat="@mipmap/btn_visualizarocorrencias" />
 
@@ -75,8 +71,6 @@
             android:id="@+id/btn_entrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
             android:background="@null"
             app:srcCompat="@mipmap/btn_entrar" />
 
@@ -84,8 +78,6 @@
             android:id="@+id/btn_cadastrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
             android:background="@null"
             app:srcCompat="@mipmap/btn_cadastrar" />
 
@@ -101,7 +93,6 @@
             android:id="@+id/btn_sobre"
             android:layout_width="151dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:background="@null"
             app:srcCompat="@mipmap/btn_sobre" />
     </TableRow>
