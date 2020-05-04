@@ -60,6 +60,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         setContentView(R.layout.activity_enviar);
 
         ImageButton btn_salvar = (ImageButton) findViewById(R.id.btn_salvar);
+        ImageButton btn_apagartudo = (ImageButton) findViewById(R.id.btn_apagartudo);
         ImageButton btn_voltar = (ImageButton) findViewById(R.id.btn_voltar);
 
         btn_voltar.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +83,14 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
             @Override
             public void onClick(View v) {
                 askCameraPermission();
+            }
+        });
+
+        // Deletando as fotos
+        btn_apagartudo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteAll();
             }
         });
 
@@ -167,6 +176,13 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         }
     }
 
+    private void deleteAll() {
+        foto1.setImageResource(0);
+        foto2.setImageResource(0);
+        foto3.setImageResource(0);
+        btn_tirarfoto.setEnabled(true);
+    }
+
     private void askCameraPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 101);
@@ -199,10 +215,10 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
             Bitmap foto = (Bitmap) data.getExtras().get("data");
             if (hasImage(foto1) == false) {
                 foto1.setImageBitmap(foto);
-                Bitmap bitmap = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                image1 = baos.toByteArray();
+//                Bitmap bitmap = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
+//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//                image1 = baos.toByteArray();
             } else if (hasImage(foto2) == false) {
                 foto2.setImageBitmap(foto);
 //                Bitmap bitmap2 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
