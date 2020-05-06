@@ -40,11 +40,12 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EnviarActivity extends AppCompatActivity implements LocationListener {
     private LocationManager locationManager;
-    private TextView textView;
+    private TextView textView, edt_descricao;
     private ImageButton btn_tirarfoto;
     private ImageView foto1, foto2, foto3;
     private String json;
@@ -71,6 +72,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         });
 
         textView = (TextView) findViewById(R.id.id_textViewLATLONG);
+        edt_descricao = (TextView) findViewById(R.id.edt_descricao);
 
         // Declaração para o uso da câmera
         btn_tirarfoto = findViewById(R.id.btn_tirarfoto);
@@ -108,27 +110,42 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View view) {
-//                mostrarMensagem("TESTE");
+                ocorrencia = new Ocorrencia();
+                objFoto1 = new Foto();
+                objFoto2 = new Foto();
+                objFoto3 = new Foto();
+                local = new Local();
 
                 if (image1 != null) {
-                    mostrarMensagem("OK");
-                } else {
-                    mostrarMensagem("TESTE");
-
+                    objFoto1.setUrlFoto(image1);
                 }
-//                objFoto2.setUrlFoto(image2);
-//                objFoto3.setUrlFoto(image3);
+                if (image2 != null) {
+                    objFoto2.setUrlFoto(image2);
+                }
+                if (image3 != null) {
+                    objFoto3.setUrlFoto(image3);
+                }
 
-//                local.setLatitude(location.getLatitude());
-//                local.setLongitude(location.getLongitude());
+                local.setLatitude(location.getLatitude());
+                local.setLongitude(location.getLongitude());
 
-//                ocorrencia.setDescricao("Teste");
-//                List<Foto> fotos = null;
-//                fotos.add(objFoto1);
-//                fotos.add(objFoto2);
-//                fotos.add(objFoto3);
-//                ocorrencia.setFotos(fotos);
-//                ocorrencia.setLocal(local);
+                List<byte[]> fotos = new ArrayList<byte[]>();
+                if (objFoto1.getUrlFoto() != null && objFoto1.getUrlFoto().length > 0) {
+                    fotos.add(objFoto1.getUrlFoto());
+                }
+               if (objFoto2.getUrlFoto() != null && objFoto2.getUrlFoto().length > 0) {
+                    fotos.add(objFoto2.getUrlFoto());
+                }
+                if (objFoto3.getUrlFoto() != null && objFoto3.getUrlFoto().length > 0) {
+                    fotos.add(objFoto3.getUrlFoto());
+                }
+
+                ocorrencia.setDescricao(edt_descricao.getText().toString());
+                ocorrencia.setFotos(fotos);
+                ocorrencia.setLocal(local);
+
+                //dispara chamada assincrona para inclusão no WS
+                new AsyncWS().execute();
             }
         });
     }
@@ -215,23 +232,23 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
             Bitmap foto = (Bitmap) data.getExtras().get("data");
             if (hasImage(foto1) == false) {
                 foto1.setImageBitmap(foto);
-//                Bitmap bitmap = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
-//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-//                image1 = baos.toByteArray();
+                Bitmap bitmap = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                image1 = baos.toByteArray();
             } else if (hasImage(foto2) == false) {
                 foto2.setImageBitmap(foto);
-//                Bitmap bitmap2 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
-//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//                bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-//                image2 = baos.toByteArray();
+                Bitmap bitmap2 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                image2 = baos.toByteArray();
             } else if (hasImage(foto3) == false) {
                 foto3.setImageBitmap(foto);
                 btn_tirarfoto.setEnabled(false);
-//                Bitmap bitmap3 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
-//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//                bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-//                image3 = baos.toByteArray();
+                Bitmap bitmap3 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                image3 = baos.toByteArray();
             }
         }
     }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Ocorrencia {
     private Long id;
-    private List<Foto> fotos;
+    private List<byte[]> fotos;
     private Date data;
     private String descricao;
     private Local local;
@@ -19,11 +19,11 @@ public class Ocorrencia {
         this.id = id;
     }
 
-    public List<Foto> getFotos() {
+    public List<byte[]> getFotos() {
         return fotos;
     }
 
-    public void setFotos(List<Foto> fotos) {
+    public void setFotos(List<byte[]> fotos) {
         this.fotos = fotos;
     }
 
@@ -33,6 +33,14 @@ public class Ocorrencia {
 
     public void setData(Date data) {
         this.data = data;
+    }
+
+    public Local getLocal() {
+        return local;
+    }
+
+    public void setLocal(Local local) {
+        this.local = local;
     }
 
     public String getDescricao() {
