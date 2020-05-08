@@ -3,11 +3,14 @@ package com.rodobicho.rodoapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class SobreActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,5 +25,6 @@ public class SobreActivity extends AppCompatActivity {
                 startActivity(new Intent(SobreActivity.this, MainActivity.class));
             }
         });
+
     }
 }
