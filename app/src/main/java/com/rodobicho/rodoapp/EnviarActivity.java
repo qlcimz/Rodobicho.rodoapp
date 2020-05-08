@@ -49,7 +49,9 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
     private ImageButton btn_tirarfoto;
     private ImageView foto1, foto2, foto3;
     private String json;
+    private int i;
     private final String WS_URL = "http://10.0.2.2:8080/incendio/ocorrenciaController/inserir";
+
     Ocorrencia ocorrencia;
     Local local;
     Foto objFoto1, objFoto2, objFoto3;
@@ -84,7 +86,13 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         btn_tirarfoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                askCameraPermission();
+                if(i < 3){
+                    askCameraPermission();
+                    i ++ ;
+                } else if (i >= 3) {
+                    mostrarMensagem("Limite de 3 fotos atingido");
+                }
+
             }
         });
 
@@ -93,6 +101,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
             @Override
             public void onClick(View v) {
                 deleteAll();
+                i=0;
             }
         });
 
@@ -244,11 +253,13 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                 image2 = baos.toByteArray();
             } else if (hasImage(foto3) == false) {
                 foto3.setImageBitmap(foto);
-                btn_tirarfoto.setEnabled(false);
+                //btn_tirarfoto.setEnabled(false);
+                mostrarMensagem("Limite de 3 fotos atingido");
                 Bitmap bitmap3 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 image3 = baos.toByteArray();
+
             }
         }
     }
@@ -264,10 +275,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         return hasImage;
     }
 
-    /*
-            Autor:Vítor Abramo Nardelli Ferreira
-            Métodos para identificação da localização do aparelho (Latitude e Longitude)
-             */
+
     @Override
     public void onLocationChanged(Location location) {
         double longitude = location.getLongitude();
