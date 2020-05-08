@@ -18,6 +18,7 @@ import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -45,7 +46,7 @@ import java.util.List;
 
 public class EnviarActivity extends AppCompatActivity implements LocationListener {
     private LocationManager locationManager;
-    private TextView textView, edt_descricao;
+    private TextView textView;
     private ImageButton btn_tirarfoto;
     private ImageView foto1, foto2, foto3;
     private String json;
@@ -66,6 +67,8 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         ImageButton btn_apagartudo = (ImageButton) findViewById(R.id.btn_apagartudo);
         ImageButton btn_voltar = (ImageButton) findViewById(R.id.btn_voltar);
 
+
+
         btn_voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +77,6 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         });
 
         textView = (TextView) findViewById(R.id.id_textViewLATLONG);
-        edt_descricao = (TextView) findViewById(R.id.edt_descricao);
 
         // Declaração para o uso da câmera
         btn_tirarfoto = findViewById(R.id.btn_tirarfoto);
@@ -119,6 +121,19 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View view) {
+                final EditText edt_descricao = (EditText) findViewById(R.id.edt_descricao);
+                final String descricao = edt_descricao.getText().toString();
+
+                if (descricao.length() == 0) {
+                    edt_descricao.setError("É necessária a descrição para a ocorrência");
+                    return;
+                }
+
+                if (hasImage(foto1) == false){
+                    mostrarMensagem("É necessária pelo menos uma foto");
+                    return;
+                }
+
                 ocorrencia = new Ocorrencia();
                 objFoto1 = new Foto();
                 objFoto2 = new Foto();
@@ -134,6 +149,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                 if (image3 != null) {
                     objFoto3.setUrlFoto(image3);
                 }
+
 
                 local.setLatitude(location.getLatitude());
                 local.setLongitude(location.getLongitude());
