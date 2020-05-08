@@ -154,20 +154,21 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                 local.setLatitude(location.getLatitude());
                 local.setLongitude(location.getLongitude());
 
-                List<byte[]> fotos = new ArrayList<byte[]>();
-                if (objFoto1.getUrlFoto() != null && objFoto1.getUrlFoto().length > 0) {
-                    fotos.add(objFoto1.getUrlFoto());
-                }
-               if (objFoto2.getUrlFoto() != null && objFoto2.getUrlFoto().length > 0) {
-                    fotos.add(objFoto2.getUrlFoto());
-                }
-                if (objFoto3.getUrlFoto() != null && objFoto3.getUrlFoto().length > 0) {
-                    fotos.add(objFoto3.getUrlFoto());
-                }
-
-                ocorrencia.setDescricao(edt_descricao.getText().toString());
-                ocorrencia.setFotos(fotos);
-                ocorrencia.setLocal(local);
+//                List<Foto> fotos = new ArrayList<Foto>();
+//                if (objFoto1.getUrlFoto() != null && objFoto1.getUrlFoto().length > 0) {
+//                    fotos.add(objFoto1.getUrlFoto());
+//                }
+//               if (objFoto2.getUrlFoto() != null && objFoto2.getUrlFoto().length > 0) {
+//                    fotos.add(objFoto2.getUrlFoto());
+//                }
+//                if (objFoto3.getUrlFoto() != null && objFoto3.getUrlFoto().length > 0) {
+//                    fotos.add(objFoto3.getUrlFoto());
+//                }
+//
+//                ocorrencia.setDescricao(edt_descricao.getText().toString());
+//                //Modificar Aqui
+//                //ocorrencia.setFotos();
+//                ocorrencia.setLocal(local);
 
                 //dispara chamada assincrona para inclusão no WS
                 new AsyncWS().execute();
