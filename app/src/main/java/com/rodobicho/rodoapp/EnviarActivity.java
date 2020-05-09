@@ -16,6 +16,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,7 +52,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
     private ImageView foto1, foto2, foto3;
     private String json;
     private int i;
-    private final String WS_URL = "http://10.0.2.2:8080/incendio/ocorrenciaController/inserir";
+    private final String WS_URL = "http://10.0.2.2:8081/rodobicho/ocorrencia/inserir";
 
     Ocorrencia ocorrencia;
     Local local;
@@ -141,34 +142,34 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                 local = new Local();
 
                 if (image1 != null) {
-                    objFoto1.setUrlFoto(image1);
+                    objFoto1.setUrlFoto(Base64.encodeToString(image1,Base64.DEFAULT).replace("\n",""));
                 }
                 if (image2 != null) {
-                    objFoto2.setUrlFoto(image2);
+                    objFoto2.setUrlFoto(Base64.encodeToString(image1,Base64.DEFAULT).replace("\n",""));
                 }
                 if (image3 != null) {
-                    objFoto3.setUrlFoto(image3);
+                    objFoto3.setUrlFoto(Base64.encodeToString(image1,Base64.DEFAULT).replace("\n",""));
                 }
 
-
-                local.setLatitude(location.getLatitude());
-                local.setLongitude(location.getLongitude());
-
-//                List<Foto> fotos = new ArrayList<Foto>();
-//                if (objFoto1.getUrlFoto() != null && objFoto1.getUrlFoto().length > 0) {
-//                    fotos.add(objFoto1.getUrlFoto());
-//                }
-//               if (objFoto2.getUrlFoto() != null && objFoto2.getUrlFoto().length > 0) {
-//                    fotos.add(objFoto2.getUrlFoto());
-//                }
-//                if (objFoto3.getUrlFoto() != null && objFoto3.getUrlFoto().length > 0) {
-//                    fotos.add(objFoto3.getUrlFoto());
-//                }
+                if(location != null) {
+                    local.setLatitude(location.getLatitude());
+                    local.setLongitude(location.getLongitude());
+                }
+                List<Foto> fotos = new ArrayList<Foto>();
+                if (objFoto1.getUrlFoto() != null) {
+                    fotos.add(objFoto1);
+                }
+               if (objFoto2.getUrlFoto() != null) {
+                    fotos.add(objFoto2);
+               }
+                if (objFoto3.getUrlFoto() != null) {
+                    fotos.add(objFoto3);
+                }
 //
-//                ocorrencia.setDescricao(edt_descricao.getText().toString());
+                ocorrencia.setDescricao(edt_descricao.getText().toString());
 //                //Modificar Aqui
-//                //ocorrencia.setFotos();
-//                ocorrencia.setLocal(local);
+                ocorrencia.setFotos(fotos);
+                ocorrencia.setLocal(local);
 
                 //dispara chamada assincrona para inclusão no WS
                 new AsyncWS().execute();
@@ -260,13 +261,13 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                 foto1.setImageBitmap(foto);
                 Bitmap bitmap = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 60, baos);
                 image1 = baos.toByteArray();
             } else if (hasImage(foto2) == false) {
                 foto2.setImageBitmap(foto);
                 Bitmap bitmap2 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                bitmap2.compress(Bitmap.CompressFormat.JPEG, 60, baos);
                 image2 = baos.toByteArray();
             } else if (hasImage(foto3) == false) {
                 foto3.setImageBitmap(foto);
@@ -274,7 +275,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                 mostrarMensagem("Limite de 3 fotos atingido");
                 Bitmap bitmap3 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                bitmap3.compress(Bitmap.CompressFormat.JPEG, 60, baos);
                 image3 = baos.toByteArray();
 
             }
@@ -295,9 +296,11 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
 
     @Override
     public void onLocationChanged(Location location) {
-        double longitude = location.getLongitude();
-        double latitude = location.getLatitude();
-        textView.setText("Longitude: " + longitude + "\n" + "Latitude: " + latitude);
+        if(location != null) {
+            double longitude = location.getLongitude();
+            double latitude = location.getLatitude();
+            textView.setText("Longitude: " + longitude + "\n" + "Latitude: " + latitude);
+        }
     }
 
     @Override
