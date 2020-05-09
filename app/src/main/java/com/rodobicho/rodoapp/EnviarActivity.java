@@ -67,9 +67,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         ImageButton btn_salvar = (ImageButton) findViewById(R.id.btn_salvar);
         ImageButton btn_apagartudo = (ImageButton) findViewById(R.id.btn_apagartudo);
         ImageButton btn_voltar = (ImageButton) findViewById(R.id.btn_voltar);
-
-
-
+        
         btn_voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,7 +129,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                 }
 
                 if (hasImage(foto1) == false){
-                    mostrarMensagem("É necessária pelo menos uma foto");
+                    mostrarMensagem("É necessário pelo menos uma foto");
                     return;
                 }
 
@@ -165,9 +163,8 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                 if (objFoto3.getUrl() != null) {
                     fotos.add(objFoto3);
                 }
-//
+
                 ocorrencia.setDescricao(edt_descricao.getText().toString());
-//                //Modificar Aqui
                 ocorrencia.setFotos(fotos);
                 ocorrencia.setLocal(local);
 
@@ -224,7 +221,6 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         foto1.setImageResource(0);
         foto2.setImageResource(0);
         foto3.setImageResource(0);
-        btn_tirarfoto.setEnabled(true);
     }
 
     private void askCameraPermission() {
@@ -271,7 +267,6 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                 image2 = baos.toByteArray();
             } else if (hasImage(foto3) == false) {
                 foto3.setImageBitmap(foto);
-                //btn_tirarfoto.setEnabled(false);
                 mostrarMensagem("Limite de 3 fotos atingido");
                 Bitmap bitmap3 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
