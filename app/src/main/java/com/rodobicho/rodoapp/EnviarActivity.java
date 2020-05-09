@@ -142,13 +142,13 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                 local = new Local();
 
                 if (image1 != null) {
-                    objFoto1.setUrlFoto(Base64.encodeToString(image1,Base64.DEFAULT).replace("\n",""));
+                    objFoto1.setUrl(Base64.encodeToString(image1,Base64.DEFAULT).replace("\n",""));
                 }
                 if (image2 != null) {
-                    objFoto2.setUrlFoto(Base64.encodeToString(image1,Base64.DEFAULT).replace("\n",""));
+                    objFoto2.setUrl(Base64.encodeToString(image1,Base64.DEFAULT).replace("\n",""));
                 }
                 if (image3 != null) {
-                    objFoto3.setUrlFoto(Base64.encodeToString(image1,Base64.DEFAULT).replace("\n",""));
+                    objFoto3.setUrl(Base64.encodeToString(image1,Base64.DEFAULT).replace("\n",""));
                 }
 
                 if(location != null) {
@@ -156,13 +156,13 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                     local.setLongitude(location.getLongitude());
                 }
                 List<Foto> fotos = new ArrayList<Foto>();
-                if (objFoto1.getUrlFoto() != null) {
+                if (objFoto1.getUrl() != null) {
                     fotos.add(objFoto1);
                 }
-               if (objFoto2.getUrlFoto() != null) {
+               if (objFoto2.getUrl() != null) {
                     fotos.add(objFoto2);
                }
-                if (objFoto3.getUrlFoto() != null) {
+                if (objFoto3.getUrl() != null) {
                     fotos.add(objFoto3);
                 }
 //
@@ -261,13 +261,13 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                 foto1.setImageBitmap(foto);
                 Bitmap bitmap = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 60, baos);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 image1 = baos.toByteArray();
             } else if (hasImage(foto2) == false) {
                 foto2.setImageBitmap(foto);
                 Bitmap bitmap2 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap2.compress(Bitmap.CompressFormat.JPEG, 60, baos);
+                bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 image2 = baos.toByteArray();
             } else if (hasImage(foto3) == false) {
                 foto3.setImageBitmap(foto);
@@ -275,7 +275,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                 mostrarMensagem("Limite de 3 fotos atingido");
                 Bitmap bitmap3 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap3.compress(Bitmap.CompressFormat.JPEG, 60, baos);
+                bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 image3 = baos.toByteArray();
 
             }

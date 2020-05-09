@@ -2,7 +2,7 @@ package com.rodobicho.rodoapp.entidade;
 
 public class Foto {
     private Long id;
-    private String urlFoto;
+    private String url;
 
     public Long getId() {
         return id;
@@ -12,18 +12,18 @@ public class Foto {
         this.id = id;
     }
 
-    public String getUrlFoto() {
-        return urlFoto;
+    public String getUrl() {
+        return url;
     }
 
-    public void setUrlFoto(String urlFoto) {
-        this.urlFoto = urlFoto;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override
     public String toString() {
         return "{" +
-                "url='" + urlFoto + '\'' +
+                "url='" + url + '\'' +
                 '}';
     }
 }
