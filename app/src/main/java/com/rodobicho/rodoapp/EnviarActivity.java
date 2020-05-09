@@ -67,7 +67,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         ImageButton btn_salvar = (ImageButton) findViewById(R.id.btn_salvar);
         ImageButton btn_apagartudo = (ImageButton) findViewById(R.id.btn_apagartudo);
         ImageButton btn_voltar = (ImageButton) findViewById(R.id.btn_voltar);
-        
+
         btn_voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -267,12 +267,10 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                 image2 = baos.toByteArray();
             } else if (hasImage(foto3) == false) {
                 foto3.setImageBitmap(foto);
-                mostrarMensagem("Limite de 3 fotos atingido");
                 Bitmap bitmap3 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 image3 = baos.toByteArray();
-
             }
         }
     }
