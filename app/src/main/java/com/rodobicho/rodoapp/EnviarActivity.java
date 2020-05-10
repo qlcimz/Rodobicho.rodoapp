@@ -252,26 +252,31 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 102) {
-            Bitmap foto = (Bitmap) data.getExtras().get("data");
-            if (hasImage(foto1) == false) {
-                foto1.setImageBitmap(foto);
-                Bitmap bitmap = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                image1 = baos.toByteArray();
-            } else if (hasImage(foto2) == false) {
-                foto2.setImageBitmap(foto);
-                Bitmap bitmap2 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                image2 = baos.toByteArray();
-            } else if (hasImage(foto3) == false) {
-                foto3.setImageBitmap(foto);
-                Bitmap bitmap3 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                image3 = baos.toByteArray();
+            try {
+                Bitmap foto = (Bitmap) data.getExtras().get("data");
+                if (hasImage(foto1) == false) {
+                    foto1.setImageBitmap(foto);
+                    Bitmap bitmap = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    image1 = baos.toByteArray();
+                } else if (hasImage(foto2) == false) {
+                    foto2.setImageBitmap(foto);
+                    Bitmap bitmap2 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    image2 = baos.toByteArray();
+                } else if (hasImage(foto3) == false) {
+                    foto3.setImageBitmap(foto);
+                    Bitmap bitmap3 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    image3 = baos.toByteArray();
+                }
+            } catch (Exception e) {
+                finish();
             }
+
         }
     }
 
