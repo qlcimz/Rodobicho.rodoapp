@@ -20,7 +20,6 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,7 +47,7 @@ import java.util.List;
 public class EnviarActivity extends AppCompatActivity implements LocationListener {
     private LocationManager locationManager;
     private TextView textView;
-    private ImageButton btn_tirarfoto;
+    private Button btn_tirarfoto;
     private ImageView foto1, foto2, foto3;
     private String json;
     private int i;
@@ -64,10 +63,10 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enviar);
 
-        ImageButton btn_salvar = (ImageButton) findViewById(R.id.btn_salvar);
-        ImageButton btn_apagartudo = (ImageButton) findViewById(R.id.btn_apagartudo);
-        ImageButton btn_voltar = (ImageButton) findViewById(R.id.btn_voltar);
 
+        Button btn_salvar = (Button) findViewById(R.id.btn_salvar);
+        Button btn_apagartudo = (Button) findViewById(R.id.btn_apagartudo);
+        Button btn_voltar = (Button) findViewById(R.id.btn_voltar);
 
 
         btn_voltar.setOnClickListener(new View.OnClickListener() {

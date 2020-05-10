@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,131 +7,120 @@
     android:background="#FFFFFF"
     tools:context=".EnviarActivity">
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <TextView
-            android:id="@+id/txt_cadastrar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Enviar Nova Ocorrência"
-            android:textColor="#000000"/>
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_marginBottom="30dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/txt_novaocorrencia"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Enviar Nova Ocorrência"
+        android:textColor="#000000"/>
+
+    <ImageView
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/txt_novaocorrencia"
+        android:id="@+id/foto1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/colorAccent"/>
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/txt_novaocorrencia"
+        android:id="@+id/foto2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/colorAccent"/>
+    <ImageView
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/txt_novaocorrencia"
+        android:id="@+id/foto3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/colorAccent"/>
+
+    <Button
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentLeft="true"
         android:layout_marginTop="30dp"
-        android:gravity="clip_horizontal|center">
+        android:layout_below="@id/foto1"
+        android:id="@+id/btn_tirarfoto"
+        android:layout_height="wrap_content"
+        android:text="Tirar Foto"
+        android:layout_width="150dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/btn"/>
 
-        <ImageView
-            android:id="@+id/foto1"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:id="@+id/foto2"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:id="@+id/foto3"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_weight="1" />
-
-    </TableRow>
-
-
-    <TableRow
-        android:layout_width="429dp"
-        android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
-        android:gravity="center">
-
-        <ImageButton
-            android:id="@+id/btn_tirarfoto"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            app:srcCompat="@mipmap/btn_tirarfoto"
-            android:background="@null"/>
-
-        <ImageButton
-            android:id="@+id/btn_apagartudo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            app:srcCompat="@mipmap/btn_apagartudo"
-            android:background="@null"/>
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="Descrição: "
-            android:textColor="#000000"/>
-
-        <EditText
-            android:id="@+id/edt_descricao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:ems="10"
-            android:inputType="textPersonName" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/id_textViewLATLONG"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello world"
-            android:textColor="#000000"/>
-
-        <ImageButton
-            android:id="@+id/btn_salvar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/btn_salvar"
-            android:background="@null"/>
-
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <Button
+        android:layout_marginRight="30dp"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="30dp"
-        android:gravity="center" >
+        android:layout_below="@id/foto1"
+        android:id="@+id/btn_apagartudo"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Apagar Tudo"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/btn"/>
 
-        <ImageButton
-            android:id="@+id/btn_voltar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/btn_voltar"
-            android:background="@null"/>
-    </TableRow>
-</TableLayout>
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/btn_tirarfoto"
+        android:id="@+id/txt_descricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descrição: "
+        android:textColor="#000000"/>
+
+    <EditText
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/btn_tirarfoto"
+        android:id="@+id/edt_descricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/edt_descricao"
+        android:id="@+id/id_textViewLATLONG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello world"
+        android:textColor="#000000"/>
+
+    <Button
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/id_textViewLATLONG"
+        android:id="@+id/btn_salvar"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Salvar"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/btn"/>
+
+    <Button
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_salvar"
+        android:id="@+id/btn_voltar"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Voltar"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/btn"/>
+
+
+
+</RelativeLayout>
