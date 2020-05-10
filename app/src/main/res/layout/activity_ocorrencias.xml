@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,56 +7,43 @@
     android:background="#FFFFFF"
     tools:context=".OcorrenciasActivity">
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/txt_visualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Ocorrências Cadastradas"
+        android:textColor="#000000"/>
 
-        <TextView
-            android:id="@+id/txt_cadastrar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Ocorrências Cadastradas"
-            android:textColor="#000000"/>
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <ScrollView
         android:layout_marginTop="30dp"
-        android:gravity="center">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ListView
-                    android:layout_width="189dp"
-                    android:layout_height="196dp" />
-            </LinearLayout>
-        </ScrollView>
-
-    </TableRow>
-
-    <TableRow
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/txt_visualizar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:paddingTop="30dp">
+        android:layout_height="match_parent">
 
-        <ImageButton
-            android:id="@+id/btn_voltar"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/btn_voltar"
-            android:background="@null"/>
-    </TableRow>
+            android:orientation="vertical"
+            android:gravity="center">
 
-</TableLayout>
+            <ListView
+                android:layout_width="189dp"
+                android:layout_height="196dp" />
+
+            <Button
+                android:layout_marginTop="30dp"
+                android:id="@+id/btn_voltar"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn"
+                android:text="Voltar"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</RelativeLayout>
