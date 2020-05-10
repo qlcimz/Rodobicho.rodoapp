@@ -100,8 +100,6 @@
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
                                       <entry key="foregroundImage" value="C:\Users\User\Downloads\RodoBichoMobile\Rodobicho.rodoapp\app\src\main\res\mipmap-xhdpi\img_logo.png" />
-                                      <entry key="legacyIconShape" value="CIRCLE" />
-                                      <entry key="outputName" value="ic_logo" />
                                     </map>
                                   </option>
                                 </PersistentState>
