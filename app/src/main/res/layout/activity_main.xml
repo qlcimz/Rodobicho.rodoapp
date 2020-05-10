@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,98 +7,76 @@
     android:background="@mipmap/bkg_main"
     tools:context=".MainActivity">
 
-    <TableRow
+    <TextView
+        android:id="@+id/Rodobicho"
         android:layout_width="match_parent"
-        android:layout_height="114dp">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Rodobicho"
+        android:textColor="#186013"
+        android:textSize="36sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/Rodobicho"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="70dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Rodobicho"
-            android:textColor="#186013"
-            android:textStyle="bold"
-            android:textSize="36sp" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Rodobicho"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        app:srcCompat="@mipmap/img_logo" />
 
-    </TableRow>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/img_logo" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:gravity="center">
-
-        <ImageButton
+        <Button
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/imageView"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
             android:id="@+id/btn_novaocorrencia"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:background="@null"
-            app:srcCompat="@mipmap/btn_novaocorrencia" />
+            android:background="@drawable/btn"
+            android:text="Nova Ocorrência"
+            android:textColor="#FFFFFF" />
 
-        <ImageButton
+
+
+
+        <Button
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/imageView"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
             android:id="@+id/btn_visualizarocorrencias"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:background="@null"
-            app:srcCompat="@mipmap/btn_visualizarocorrencias" />
+            android:background="@drawable/btn"
+            android:text="Visualizar Ocorrências"
+            android:textColor="#FFFFFF" />
 
-    </TableRow>
 
-    <TableRow
-        android:layout_width="397dp"
-        android:layout_height="match_parent"
-        android:layout_marginRight="20dp"
-        android:gravity="center">
-
-        <ImageButton
-            android:id="@+id/btn_entrar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            app:srcCompat="@mipmap/btn_entrar" />
-
-        <ImageButton
-            android:id="@+id/btn_cadastrar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            app:srcCompat="@mipmap/btn_cadastrar" />
-
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:gravity="center">
-
-        <ImageButton
+        <Button
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/btn_novaocorrencia"
             android:id="@+id/btn_sobre"
             android:layout_width="151dp"
             android:layout_height="wrap_content"
-            android:background="@null"
-            app:srcCompat="@mipmap/btn_sobre" />
+            android:background="@drawable/btn"
+            android:text="Sobre"
+            android:textColor="#FFFFFF" />
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/sign_in_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </TableRow>
-</TableLayout>
+    <com.google.android.gms.common.SignInButton
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_sobre"
+        android:layout_marginTop="30dp"
+        android:id="@+id/sign_in_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+</RelativeLayout>

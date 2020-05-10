@@ -12,7 +12,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -29,11 +29,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageButton btn_novaocorrencia = (ImageButton) findViewById(R.id.btn_novaocorrencia);
-        ImageButton btn_entrar = (ImageButton) findViewById(R.id.btn_entrar);
-        ImageButton btn_visualizarocorrencias = (ImageButton) findViewById(R.id.btn_visualizarocorrencias);
-        ImageButton btn_sobre = (ImageButton) findViewById(R.id.btn_sobre);
-        ImageButton btn_cadastrar = (ImageButton) findViewById(R.id.btn_cadastrar);
+        Button btn_novaocorrencia = (Button) findViewById(R.id.btn_novaocorrencia);
+        //Button btn_entrar = (Button) findViewById(R.id.btn_entrar);
+        Button btn_visualizarocorrencias = (Button) findViewById(R.id.btn_visualizarocorrencias);
+        Button btn_sobre = (Button) findViewById(R.id.btn_sobre);
+        //Button btn_cadastrar = (Button) findViewById(R.id.btn_cadastrar);
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -55,12 +55,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btn_entrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, EntrarActivity.class));
-            }
-        });
+//        btn_entrar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this, EntrarActivity.class));
+//            }
+//        });
 
         btn_visualizarocorrencias.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,12 +76,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btn_cadastrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, CadastrarActivity.class));
-            }
-        });
+//        btn_cadastrar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this, CadastrarActivity.class));
+//            }
+//        });
 
         int PERMISSION_ALL = 1;
         String[] PERMISSIONS = {
