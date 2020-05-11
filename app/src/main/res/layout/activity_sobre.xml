@@ -16,15 +16,14 @@
         app:srcCompat="@mipmap/sobre" />
 
     <Button
-        android:layout_below="@id/imageView2"
-        android:layout_centerHorizontal="true"
         android:id="@+id/btn_voltar"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn"
         android:text="Voltar"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/btn" />
+        android:textColor="#FFFFFF" />
 
 
-
-    </RelativeLayout>
+</RelativeLayout>
