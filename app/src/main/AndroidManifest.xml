@@ -18,15 +18,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SobreActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".SobreActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
         <activity android:name=".OcorrenciasActivity" android:screenOrientation="portrait"/>
         <activity android:name=".EntrarActivity" android:screenOrientation="portrait"/>
         <activity android:name=".CadastrarActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".EnviarActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity" android:screenOrientation="portrait">
+        <activity android:name=".EnviarActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait" android:launchMode="singleTask">
 
         </activity>
         <activity android:name=".SplashActivity" android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

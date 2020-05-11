@@ -73,6 +73,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(EnviarActivity.this, MainActivity.class));
+                finish();
             }
         });
 

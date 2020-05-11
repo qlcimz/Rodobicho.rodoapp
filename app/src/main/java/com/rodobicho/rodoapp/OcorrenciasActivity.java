@@ -22,6 +22,7 @@ public class OcorrenciasActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(OcorrenciasActivity.this, MainActivity.class));
+                finish();
             }
         });
     }
