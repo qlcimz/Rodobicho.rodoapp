@@ -290,13 +290,13 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                     image1 = baos.toByteArray();
                 } else if (hasImage(foto2) == false) {
                     foto2.setImageBitmap(foto);
-                    Bitmap bitmap2 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
+                    Bitmap bitmap2 = ((BitmapDrawable) foto2.getDrawable()).getBitmap();
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                     image2 = baos.toByteArray();
                 } else if (hasImage(foto3) == false) {
                     foto3.setImageBitmap(foto);
-                    Bitmap bitmap3 = ((BitmapDrawable) foto1.getDrawable()).getBitmap();
+                    Bitmap bitmap3 = ((BitmapDrawable) foto3.getDrawable()).getBitmap();
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                     image3 = baos.toByteArray();
