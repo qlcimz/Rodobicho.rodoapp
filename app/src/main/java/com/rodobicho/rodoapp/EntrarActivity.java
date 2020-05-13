@@ -5,41 +5,42 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.Button;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 
 public class EntrarActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_entrar);
-        ImageButton btn_voltar = (ImageButton)findViewById(R.id.btn_voltar);
-        ImageButton btn_entrar = (ImageButton)findViewById(R.id.btn_entrar);
+        setContentView(R.layout.activity_main);
+        Button btn_novaocorrencia = (Button) findViewById(R.id.btn_novaocorrencia);
+        //Button btn_entrar = (Button) findViewById(R.id.btn_entrar);
+        Button btn_visualizarocorrencias = (Button) findViewById(R.id.btn_visualizarocorrencias);
+        Button btn_sobre = (Button) findViewById(R.id.btn_sobre);
+        //Button btn_cadastrar = (Button) findViewById(R.id.btn_cadastrar);
 
-        btn_voltar.setOnClickListener(new View.OnClickListener() {
+        // Configure sign-in to request the user's ID, email address, and basic
+        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        // Build a GoogleSignInClient with the options specified by gso.
+        final GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        // Set the dimensions of the sign-in button.
+        SignInButton signInButton = findViewById(R.id.sign_in_button);
+        signInButton.setSize(SignInButton.SIZE_STANDARD);
+
+        btn_novaocorrencia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EntrarActivity.this, MainActivity.class));
-            }
-        });
-
-        btn_entrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final EditText edt_email = (EditText) findViewById(R.id.edt_email);
-                final EditText edt_password = (EditText) findViewById(R.id.edt_password);
-                final String email = edt_email.getText().toString();
-                final String password = edt_password.getText().toString();
-
-                if (email.length() == 0) {
-                    edt_email.setError("Favor inserir e-mail");
-                    return;
-                }
-                if (password.length() == 0) {
-                    edt_password.setError("Favor inserir senha");
-                    return;
-                }
+                startActivity(new Intent(EntrarActivity.this, EnviarActivity.class));
             }
         });
 
