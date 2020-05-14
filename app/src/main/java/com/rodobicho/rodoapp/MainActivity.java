@@ -113,14 +113,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        // Check for existing Google Sign In account, if the user is already signed in
-        // the GoogleSignInAccount will be non-null.
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        updateUI(account);
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        // Check for existing Google Sign In account, if the user is already signed in
+//        // the GoogleSignInAccount will be non-null.
+//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+//        if(account!=null) {
+//            updateUI(false);
+//        }
+//
+//    }
 
     private void signIn(GoogleSignInClient mGoogleSignInClient) {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -145,17 +148,19 @@ public class MainActivity extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
             // Signed in successfully, show authenticated UI.
-            updateUI(account);
+            updateUI(true);
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            updateUI(null);
+            updateUI(false);
         }
     }
 
-    private void updateUI(GoogleSignInAccount account) {
-        if (account != null) {
+    private void updateUI(boolean isLogin) {
+        if (isLogin) {
             signInButton.setVisibility(View.GONE);
+        } else {
+            signInButton.setVisibility(View.VISIBLE);
         }
     }
 
