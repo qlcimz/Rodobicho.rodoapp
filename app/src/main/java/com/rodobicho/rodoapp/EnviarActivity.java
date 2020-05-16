@@ -31,6 +31,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.gson.Gson;
 import com.rodobicho.rodoapp.entidade.Foto;
 import com.rodobicho.rodoapp.entidade.Local;
@@ -78,7 +80,11 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         });
 
         textView = (TextView) findViewById(R.id.id_textViewLATLONG);
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
 
+        if (acct != null) {
+            textView.setText(acct.getEmail());
+        }
         // Declaração para o uso da câmera
         btn_tirarfoto = findViewById(R.id.btn_tirarfoto);
         foto1 = findViewById(R.id.foto1);
