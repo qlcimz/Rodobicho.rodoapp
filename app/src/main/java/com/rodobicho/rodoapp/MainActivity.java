@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -32,10 +33,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button btn_novaocorrencia = (Button) findViewById(R.id.btn_novaocorrencia);
-        //Button btn_entrar = (Button) findViewById(R.id.btn_entrar);
+        Button btn_sair = (Button) findViewById(R.id.btn_sair);
         Button btn_visualizarocorrencias = (Button) findViewById(R.id.btn_visualizarocorrencias);
         Button btn_sobre = (Button) findViewById(R.id.btn_sobre);
-        //Button btn_cadastrar = (Button) findViewById(R.id.btn_cadastrar);
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -57,12 +57,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        btn_entrar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, EntrarActivity.class));
-//            }
-//        });
+        btn_sair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         btn_visualizarocorrencias.setOnClickListener(new View.OnClickListener() {
             @Override

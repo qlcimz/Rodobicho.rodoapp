@@ -64,6 +64,16 @@
             android:text="Sobre"
             android:textColor="#FFFFFF" />
 
+    <Button
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/sign_in_button"
+        android:id="@+id/btn_sair"
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn"
+        android:text="Sair"
+        android:textColor="#FFFFFF" />
+
     <com.google.android.gms.common.SignInButton
         android:layout_centerHorizontal="true"
         android:layout_below="@id/btn_sobre"
