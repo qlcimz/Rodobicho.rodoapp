@@ -66,7 +66,7 @@
 
     <Button
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/sign_in_button"
+        android:layout_below="@id/btn_sobre"
         android:id="@+id/btn_sair"
         android:layout_width="151dp"
         android:layout_height="wrap_content"
