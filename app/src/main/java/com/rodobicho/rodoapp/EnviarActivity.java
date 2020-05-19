@@ -85,6 +85,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         if (acct != null) {
             textView.setText(acct.getEmail());
         }
+
         // Declaração para o uso da câmera
         btn_tirarfoto = findViewById(R.id.btn_tirarfoto);
         foto1 = findViewById(R.id.foto1);
@@ -95,13 +96,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         btn_tirarfoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (i < 3) {
-                    askCameraPermission();
-                    i++;
-                } else if (i >= 3) {
-                    mostrarMensagem("Limite de 3 fotos atingido");
-                }
-
+                askCameraPermission();
             }
         });
 
@@ -117,92 +112,97 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         //Permissão para buscar Localização
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-
-//       onLocationChanged(locationManager);
-
         btn_salvar.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View view) {
-                final EditText edt_descricao = (EditText) findViewById(R.id.edt_descricao);
-                final String descricao = edt_descricao.getText().toString();
-
-                if (descricao.length() == 0) {
-                    edt_descricao.setError("É necessária a descrição para a ocorrência");
-                    return;
-                }
-
-                if (hasImage(foto1) == false) {
-                    mostrarMensagem("É necessário pelo menos uma foto");
-                    return;
-                }
-
-                ocorrencia = new Ocorrencia();
-                objFoto1 = new Foto();
-                objFoto2 = new Foto();
-                objFoto3 = new Foto();
-                local = new Local();
-
-                if (image1 != null) {
-                    objFoto1.setUrl(Base64.encodeToString(image1, Base64.DEFAULT).replace("\n", ""));
-                }
-                if (image2 != null) {
-                    objFoto2.setUrl(Base64.encodeToString(image2, Base64.DEFAULT).replace("\n", ""));
-                }
-                if (image3 != null) {
-                    objFoto3.setUrl(Base64.encodeToString(image3, Base64.DEFAULT).replace("\n", ""));
-                }
-
-                if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    // Aqui recebemos a ultima localizacao obtida do usuário pela INTERNET
-                    Location localizacaoViaInternet = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-
-                    // Aqui recebemos a ultima localizacao obtida do usuário pelo GPS
-                    Location localizacaoViaGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-
-                    //Verificamos se foi obtido a localização via INTERNET
-                    if (localizacaoViaInternet != null) {
-
-                        if (locationManager != null) {
-                            local.setLatitude(localizacaoViaInternet.getLatitude());
-                            local.setLongitude(localizacaoViaInternet.getLongitude());
-                        }
-
-                    }
-                    //Verificamos se foi obtido a localização via GPS
-                    else if (localizacaoViaGPS != null) {
-                        if (locationManager != null) {
-                            local.setLatitude(localizacaoViaGPS.getLatitude());
-                            local.setLongitude(localizacaoViaGPS.getLongitude());
-                        }
-
-                    }
-
-
-                }
-                List<Foto> fotos = new ArrayList<Foto>();
-                if (objFoto1.getUrl() != null) {
-                    fotos.add(objFoto1);
-                }
-                if (objFoto2.getUrl() != null) {
-                    fotos.add(objFoto2);
-                }
-                if (objFoto3.getUrl() != null) {
-                    fotos.add(objFoto3);
-                }
-
-                ocorrencia.setDescricao(edt_descricao.getText().toString());
-                ocorrencia.setFotos(fotos);
-                ocorrencia.setLocal(local);
-
-                //dispara chamada assincrona para inclusão no WS
-                new AsyncWS().execute();
+                askLocationPermission();
             }
         });
+    }
+
+    private void askLocationPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 102);
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 103);
+            }
+        } else {
+            send();
+        }
+    }
+
+    public void send() {
+        final EditText edt_descricao = (EditText) findViewById(R.id.edt_descricao);
+        final String descricao = edt_descricao.getText().toString();
+
+        if (descricao.length() == 0) {
+            edt_descricao.setError("É necessária a descrição para a ocorrência");
+            return;
+        }
+
+        if (hasImage(foto1) == false) {
+            mostrarMensagem("É necessário pelo menos uma foto");
+            return;
+        }
+
+        ocorrencia = new Ocorrencia();
+        objFoto1 = new Foto();
+        objFoto2 = new Foto();
+        objFoto3 = new Foto();
+        local = new Local();
+
+        if (image1 != null) {
+            objFoto1.setUrl(Base64.encodeToString(image1, Base64.DEFAULT).replace("\n", ""));
+        }
+        if (image2 != null) {
+            objFoto2.setUrl(Base64.encodeToString(image2, Base64.DEFAULT).replace("\n", ""));
+        }
+        if (image3 != null) {
+            objFoto3.setUrl(Base64.encodeToString(image3, Base64.DEFAULT).replace("\n", ""));
+        }
+
+        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            // Aqui recebemos a ultima localizacao obtida do usuário pela INTERNET
+            Location localizacaoViaInternet = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+            // Aqui recebemos a ultima localizacao obtida do usuário pelo GPS
+            Location localizacaoViaGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+            //Verificamos se foi obtido a localização via INTERNET
+            if (localizacaoViaInternet != null) {
+
+                if (locationManager != null) {
+                    local.setLatitude(localizacaoViaInternet.getLatitude());
+                    local.setLongitude(localizacaoViaInternet.getLongitude());
+                }
+
+            }
+            //Verificamos se foi obtido a localização via GPS
+            else if (localizacaoViaGPS != null) {
+                if (locationManager != null) {
+                    local.setLatitude(localizacaoViaGPS.getLatitude());
+                    local.setLongitude(localizacaoViaGPS.getLongitude());
+                }
+            }
+        }
+        List<Foto> fotos = new ArrayList<Foto>();
+        if (objFoto1.getUrl() != null) {
+            fotos.add(objFoto1);
+        }
+        if (objFoto2.getUrl() != null) {
+            fotos.add(objFoto2);
+        }
+        if (objFoto3.getUrl() != null) {
+            fotos.add(objFoto3);
+        }
+
+        ocorrencia.setDescricao(edt_descricao.getText().toString());
+        ocorrencia.setFotos(fotos);
+        ocorrencia.setLocal(local);
+
+        //dispara chamada assincrona para inclusão no WS
+        new AsyncWS().execute();
     }
 
     /**
@@ -261,7 +261,12 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 101);
         } else {
-            openCamera();
+            if (i < 3) {
+                openCamera();
+                i++;
+            } else if (i >= 3) {
+                mostrarMensagem("Limite de 3 fotos atingido");
+            }
         }
     }
 
@@ -273,7 +278,20 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
             } else {
                 Toast.makeText(this, "Ative a Permissão para o Uso da Câmera", Toast.LENGTH_SHORT).show();
             }
-
+        }
+        if (requestCode == 102) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                openCamera();
+            } else {
+                Toast.makeText(this, "Ative a Permissão para o Uso do Local", Toast.LENGTH_SHORT).show();
+            }
+        }
+        if (requestCode == 103) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                openCamera();
+            } else {
+                Toast.makeText(this, "Ative a Permissão para o Uso do Local", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
