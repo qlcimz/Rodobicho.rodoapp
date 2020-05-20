@@ -10,6 +10,7 @@ public class Ocorrencia {
     private Date data;
     private String descricao;
     private Local local;
+    private Usuario usuario;
 
     public Long getId() {
         return id;
@@ -51,12 +52,21 @@ public class Ocorrencia {
         this.descricao = descricao;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     @Override
     public String toString() {
         return "Ocorrencia{" +
                 "descricao='" + descricao + '\'' +
                 ", local=" + local +
                 ", fotos=" + fotos +
+                ", usuario=" + usuario +
                 '}';
     }
 }

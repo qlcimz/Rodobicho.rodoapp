@@ -30,9 +30,10 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <ListView
-                android:layout_width="189dp"
-                android:layout_height="196dp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_ocorrencia"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <Button
                 android:layout_marginTop="30dp"
