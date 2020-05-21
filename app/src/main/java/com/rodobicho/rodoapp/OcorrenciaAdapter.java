@@ -40,6 +40,8 @@ public class OcorrenciaAdapter extends
     @Override
     public void onBindViewHolder(OcorrenciaAdapter.ViewHolder viewHolder, int position) {
         final Ocorrencia ocorrencia = ocorrenciaList.get(position);
+        TextView item_descricao = viewHolder.item_descricao;
+        item_descricao.setText(ocorrencia.getDescricao());
     }
 
     // Retorna a quantidade total de itens
