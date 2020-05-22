@@ -10,8 +10,8 @@ import android.widget.Button;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+//import androidx.recyclerview.widget.LinearLayoutManager;
+//import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -94,29 +94,29 @@ public class OcorrenciasActivity extends AppCompatActivity {
             return "ok";
         }
 
-        @Override
-        protected void onPostExecute(String json) {
-
-            //Conversão Array de Json para Array de Objetos Ocorrencia
-            Type listType = new TypeToken<List<Ocorrencia>>() {
-            }.getType();
-
-            List<Ocorrencia> ocorrenciasWS = new Gson().fromJson(json, listType);
-
-            List<Ocorrencia> ocorrenciaTenant = new ArrayList<Ocorrencia>();
-
-            if (ocorrencias != null) {
-
-                RecyclerView rvContacts = findViewById(R.id.rv_ocorrencia);
-
-                final OcorrenciaAdapter adapter = new OcorrenciaAdapter(ocorrencias);
-
-                rvContacts.setAdapter(adapter);
-
-                rvContacts.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-            }
-
-        }
+//        @Override
+//        protected void onPostExecute(String json) {
+//
+//            //Conversão Array de Json para Array de Objetos Ocorrencia
+//            Type listType = new TypeToken<List<Ocorrencia>>() {
+//            }.getType();
+//
+//            List<Ocorrencia> ocorrenciasWS = new Gson().fromJson(json, listType);
+//
+//            List<Ocorrencia> ocorrenciaTenant = new ArrayList<Ocorrencia>();
+//
+//            if (ocorrencias != null) {
+//
+//                RecyclerView rvContacts = findViewById(R.id.rv_ocorrencia);
+//
+//                final OcorrenciaAdapter adapter = new OcorrenciaAdapter(ocorrencias);
+//
+//                rvContacts.setAdapter(adapter);
+//
+//                rvContacts.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+//            }
+//
+//        }
     }
 
 }
