@@ -58,8 +58,8 @@
         android:layout_height="262dp"
         android:layout_above="@id/titulo_splash"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="20dp"
-        app:srcCompat="@drawable/rodobicho_splash" />
+        android:layout_marginBottom="25dp"
+        app:srcCompat="@mipmap/splash1" />
 
 
 </RelativeLayout>
