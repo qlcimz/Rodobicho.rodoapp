@@ -17,6 +17,7 @@
         android:label="Rodobicho"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SobreActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
         <activity android:name=".OcorrenciasActivity" android:screenOrientation="portrait"/>
