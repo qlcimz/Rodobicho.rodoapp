@@ -112,6 +112,12 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         //Permissão para buscar Localização
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
+
+
+        // TODO: Checar se GPS está ativo antes enviar
+
+
+
         btn_salvar.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
@@ -123,9 +129,9 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
 
     private void askLocationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 102);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 202);
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 103);
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 203);
             }
         } else {
             send();
@@ -260,6 +266,9 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
     private void askCameraPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 101);
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 104);
+            }
         } else {
             if (i < 3) {
                 openCamera();
@@ -279,18 +288,25 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                 Toast.makeText(this, "Ative a Permissão para o Uso da Câmera", Toast.LENGTH_SHORT).show();
             }
         }
-        if (requestCode == 102) {
+        if (requestCode == 202) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 openCamera();
             } else {
                 Toast.makeText(this, "Ative a Permissão para o Uso do Local", Toast.LENGTH_SHORT).show();
             }
         }
-        if (requestCode == 103) {
+        if (requestCode == 203) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 openCamera();
             } else {
                 Toast.makeText(this, "Ative a Permissão para o Uso do Local", Toast.LENGTH_SHORT).show();
+            }
+        }
+        if (requestCode == 104) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                openCamera();
+            } else {
+                Toast.makeText(this, "Ative a Permissão para o Uso de Fotos e Mídia", Toast.LENGTH_SHORT).show();
             }
         }
     }
