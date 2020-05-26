@@ -81,13 +81,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        btn_cadastrar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, CadastrarActivity.class));
-//            }
-//        });
-
         int PERMISSION_ALL = 1;
         String[] PERMISSIONS = {
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
