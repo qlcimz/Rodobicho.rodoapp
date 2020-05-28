@@ -37,6 +37,7 @@ import com.google.gson.Gson;
 import com.rodobicho.rodoapp.entidade.Foto;
 import com.rodobicho.rodoapp.entidade.Local;
 import com.rodobicho.rodoapp.entidade.Ocorrencia;
+import com.rodobicho.rodoapp.entidade.Usuario;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -56,6 +57,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
     private final String WS_URL = "http://192.168.0.14:8081/rodobicho/ocorrencia/inserir";
 
     Ocorrencia ocorrencia;
+    Usuario usuario;
     Local local;
     Foto objFoto1, objFoto2, objFoto3;
     byte[] image1, image2, image3;
@@ -157,6 +159,11 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         objFoto2 = new Foto();
         objFoto3 = new Foto();
         local = new Local();
+        usuario = new Usuario();
+
+        if(!textView.getText().toString().equals("")){
+            usuario.setEmail(textView.getText().toString());
+        }
 
         if (image1 != null) {
             objFoto1.setUrl(Base64.encodeToString(image1, Base64.DEFAULT).replace("\n", ""));
@@ -206,6 +213,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         ocorrencia.setDescricao(edt_descricao.getText().toString());
         ocorrencia.setFotos(fotos);
         ocorrencia.setLocal(local);
+        ocorrencia.setUsuario(usuario);
 
         //dispara chamada assincrona para inclusão no WS
         new AsyncWS().execute();
