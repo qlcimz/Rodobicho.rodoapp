@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 //import androidx.recyclerview.widget.LinearLayoutManager;
 //import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,14 +35,12 @@ public class OcorrenciasActivity extends AppCompatActivity {
 
     private final String WS_URL = "http://192.168.0.14:8081/rodobicho/ocorrencia/listar";
     private List<Ocorrencia> ocorrencias;
-    private String json;
+    private String json = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ocorrencias);
-
-        List<Ocorrencia> ocorrenciaList = new ArrayList<Ocorrencia>();
 
         Button btn_voltar = (Button)findViewById(R.id.btn_voltar);
 
@@ -71,9 +71,7 @@ public class OcorrenciasActivity extends AppCompatActivity {
                 //Tentativa de conexão e listagem ao WebService
                 URL url = new URL(WS_URL);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setDoOutput(true);
                 conn.setRequestMethod("GET");
-                conn.setRequestProperty("Content-Type", "application/json");
                 conn.connect();
 
                 InputStream is = conn.getInputStream();
@@ -94,29 +92,28 @@ public class OcorrenciasActivity extends AppCompatActivity {
             return "ok";
         }
 
-//        @Override
-//        protected void onPostExecute(String json) {
-//
-//            //Conversão Array de Json para Array de Objetos Ocorrencia
-//            Type listType = new TypeToken<List<Ocorrencia>>() {
-//            }.getType();
-//
-//            List<Ocorrencia> ocorrenciasWS = new Gson().fromJson(json, listType);
-//
-//            List<Ocorrencia> ocorrenciaTenant = new ArrayList<Ocorrencia>();
-//
-//            if (ocorrencias != null) {
-//
-//                RecyclerView rvContacts = findViewById(R.id.rv_ocorrencia);
-//
-//                final OcorrenciaAdapter adapter = new OcorrenciaAdapter(ocorrencias);
-//
-//                rvContacts.setAdapter(adapter);
-//
-//                rvContacts.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-//            }
-//
-//        }
+        @Override
+        protected void onPostExecute(String json) {
+
+            //Conversão Array de Json para Array de Objetos Ocorrencia
+            Type listType = new TypeToken<List<Ocorrencia>>() {
+            }.getType();
+
+            List<Ocorrencia> ocorrenciasWS = new Gson().fromJson(json, listType);
+
+            if (ocorrenciasWS != null) {
+
+                RecyclerView rvContacts = findViewById(R.id.rv_ocorrencia);
+
+                final OcorrenciaAdapter adapter = new OcorrenciaAdapter(ocorrenciasWS);
+
+                rvContacts.setAdapter(adapter);
+
+                rvContacts.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+            }
+
+
+        }
     }
 
 }
