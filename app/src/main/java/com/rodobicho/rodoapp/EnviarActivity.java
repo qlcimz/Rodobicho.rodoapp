@@ -298,14 +298,14 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         }
         if (requestCode == 202) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                openCamera();
+                send();
             } else {
                 Toast.makeText(this, "Ative a Permissão para o Uso do Local", Toast.LENGTH_SHORT).show();
             }
         }
         if (requestCode == 203) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                openCamera();
+                send();
             } else {
                 Toast.makeText(this, "Ative a Permissão para o Uso do Local", Toast.LENGTH_SHORT).show();
             }
