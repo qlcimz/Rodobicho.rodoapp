@@ -1,14 +1,21 @@
 package com.rodobicho.rodoapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rodobicho.rodoapp.entidade.Ocorrencia;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -40,7 +47,16 @@ public class OcorrenciaAdapter extends RecyclerView.Adapter<OcorrenciaAdapter.Vi
     public void onBindViewHolder(OcorrenciaAdapter.ViewHolder viewHolder, int position) {
         final Ocorrencia ocorrencia = ocorrenciaList.get(position);
         TextView item_descricao = viewHolder.item_descricao;
+        TextView item_data = viewHolder.item_data;
+        ImageView imageView = viewHolder.imageView3;
+
+        //Decodificando string base 64 para image
+        byte[] imageBytes = Base64.decode(ocorrencia.getFotos().get(0).getUrl(), Base64.DEFAULT);
+        Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes,0,imageBytes.length);
+
+        item_data.setText(ocorrencia.getCreated_at());
         item_descricao.setText(ocorrencia.getDescricao());
+        imageView.setImageBitmap(decodedImage);
     }
 
     // Retorna a quantidade total de itens
@@ -52,12 +68,16 @@ public class OcorrenciaAdapter extends RecyclerView.Adapter<OcorrenciaAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView item_descricao;
+        public TextView item_data;
+        public ImageView imageView3;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             item_descricao = itemView.findViewById(R.id.item_descricao);
+            item_data = itemView.findViewById(R.id.item_data);
+            imageView3 = itemView.findViewById(R.id.imageView3);
         }
     }
 }

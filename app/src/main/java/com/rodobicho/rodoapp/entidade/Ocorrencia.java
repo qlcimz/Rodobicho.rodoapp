@@ -7,7 +7,7 @@ import java.util.List;
 public class Ocorrencia {
     private Long id;
     private List<Foto> fotos;
-    private Date data;
+    private String created_at;
     private String descricao;
     private Local local;
     private Usuario usuario;
@@ -28,12 +28,12 @@ public class Ocorrencia {
         this.fotos = fotos;
     }
 
-    public Date getData() {
-        return data;
+    public String getCreated_at() {
+        return created_at;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
     }
 
     public Local getLocal() {

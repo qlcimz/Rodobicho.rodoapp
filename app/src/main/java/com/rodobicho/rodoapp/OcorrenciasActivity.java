@@ -15,9 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 //import androidx.recyclerview.widget.LinearLayoutManager;
 //import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.rodobicho.rodoapp.entidade.Ocorrencia;
+import com.rodobicho.rodoapp.entidade.Usuario;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,9 +36,10 @@ import java.util.List;
 
 public class OcorrenciasActivity extends AppCompatActivity {
 
-    private final String WS_URL = "http://192.168.0.14:8081/rodobicho/ocorrencia/listar";
+    private String WS_URL = "";
     private List<Ocorrencia> ocorrencias;
     private String json = "";
+    private Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,13 @@ public class OcorrenciasActivity extends AppCompatActivity {
             }
         });
 
+        
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+
+        if(acct != null){
+            WS_URL = "http://192.168.0.14:8081/rodobicho/ocorrencia/listarByEmail?email="+acct.getEmail();
+        }
+
         //dispara chamada assincrona para listagem no WS
         new AsyncWS().execute();
     }
@@ -66,6 +77,7 @@ public class OcorrenciasActivity extends AppCompatActivity {
             //Converão Objecto Ocorrencia para Json
             Gson gson = new Gson();
             String line;
+            String json_usuario = gson.toJson(usuario);
 
             try {
                 //Tentativa de conexão e listagem ao WebService
