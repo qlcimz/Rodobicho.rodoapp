@@ -16,6 +16,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
@@ -115,9 +116,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 
-
         // TODO: Checar se GPS está ativo antes enviar
-
 
 
         btn_salvar.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +135,19 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 203);
             }
         } else {
-            send();
+            LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+            // Verifica se o GPS está ativo
+            boolean enabled = service.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+            // Caso não esteja ativo abre um novo diálogo com as configurações para ativar
+            if (!enabled) {
+                mostrarMensagem("Ative o GPS");
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+            } else {
+                send();
+            }
         }
     }
 
@@ -161,7 +172,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
         local = new Local();
         usuario = new Usuario();
 
-        if(!textView.getText().toString().equals("")){
+        if (!textView.getText().toString().equals("")) {
             usuario.setEmail(textView.getText().toString());
         }
 

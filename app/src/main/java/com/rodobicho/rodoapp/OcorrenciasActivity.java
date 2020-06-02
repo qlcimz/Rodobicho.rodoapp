@@ -61,10 +61,10 @@ public class OcorrenciasActivity extends AppCompatActivity {
 
         if(acct != null){
             WS_URL = "http://192.168.0.14:8081/rodobicho/ocorrencia/listarByEmail?email="+acct.getEmail();
+            //dispara chamada assincrona para listagem no WS
+            new AsyncWS().execute();
         }
 
-        //dispara chamada assincrona para listagem no WS
-        new AsyncWS().execute();
     }
 
     @SuppressLint("StaticFieldLeak")
