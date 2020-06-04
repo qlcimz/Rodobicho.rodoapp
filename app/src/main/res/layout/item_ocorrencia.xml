@@ -9,8 +9,6 @@
     android:paddingBottom="10dp"
     >
 
-
-
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="100dp"
@@ -22,18 +20,19 @@
         android:layout_toRightOf="@id/imageView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <TextView
             android:id="@+id/item_descricao"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
             android:layout_marginLeft="3dp"
             android:layout_weight="1"
             android:text="Descrição"
             android:textAppearance="@style/TextAppearance.AppCompat.Display4"
-            android:textSize="18sp" />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/item_data"
