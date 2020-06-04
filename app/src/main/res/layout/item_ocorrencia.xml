@@ -9,10 +9,7 @@
     android:paddingBottom="10dp"
     >
 
-    <TableRow
-        android:layout_centerHorizontal="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
 
         <ImageView
             android:id="@+id/imageView3"
@@ -21,33 +18,32 @@
             app:srcCompat="@drawable/ic_launcher_background" />
 
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_toRightOf="@id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_descricao"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:text="Descrição"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/item_descricao"
-                android:layout_width="298dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="3dp"
-                android:layout_weight="1"
-                android:text="Descrição"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display4"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_marginLeft="3dp"
-                android:id="@+id/item_data"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Data" />
+        <TextView
+            android:id="@+id/item_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="Data" />
 
 
-        </LinearLayout>
+    </LinearLayout>
 
-
-    </TableRow>
 
 </RelativeLayout>
