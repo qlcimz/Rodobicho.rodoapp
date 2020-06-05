@@ -10,7 +10,7 @@
     >
 
         <ImageView
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
             android:id="@+id/imageView3"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
         <TextView
             android:id="@+id/item_descricao"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginLeft="3dp"
             android:layout_weight="1"
