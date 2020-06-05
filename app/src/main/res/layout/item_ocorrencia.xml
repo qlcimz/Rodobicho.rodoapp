@@ -11,8 +11,13 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:maxHeight="100dp"
+            android:maxWidth="100dp"
+            android:minHeight="100dp"
+            android:minWidth="100dp"
+            android:adjustViewBounds="true"
             app:srcCompat="@drawable/ic_launcher_background" />
 
 
@@ -21,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginLeft="15dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="10dp"
         >
@@ -28,7 +34,7 @@
         <TextView
             android:id="@+id/item_descricao"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="55dp"
             android:layout_gravity="center"
             android:layout_marginLeft="3dp"
             android:layout_weight="1"
