@@ -69,15 +69,16 @@
         android:background="@drawable/btn"/>
 
     <TextView
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/btn_tirarfoto"
         android:id="@+id/txt_descricao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/btn_tirarfoto"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="45dp"
         android:text="Descrição: "
-        android:textColor="#000000"/>
+        android:textColor="#000000"
+        android:textSize="18sp" />
 
     <EditText
         android:layout_marginTop="30dp"
@@ -91,20 +92,10 @@
         android:maxLength="50"
         android:inputType="textPersonName" />
 
-    <TextView
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/edt_descricao"
-        android:id="@+id/id_textViewLATLONG"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        android:textColor="#000000"/>
-
     <Button
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/id_textViewLATLONG"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/edt_descricao"
         android:id="@+id/btn_salvar"
         android:layout_width="150dp"
         android:layout_height="wrap_content"

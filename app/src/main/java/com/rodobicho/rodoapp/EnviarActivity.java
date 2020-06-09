@@ -55,7 +55,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
     private ImageView foto1, foto2, foto3;
     private String json;
     private int i;
-    private final String WS_URL = "http://192.168.0.14:8081/rodobicho/ocorrencia/inserir";
+    private final String WS_URL = "http://192.168.0.10:8080/rodobicho/ocorrencia/inserir";
 
     Ocorrencia ocorrencia;
     Usuario usuario;
@@ -82,12 +82,7 @@ public class EnviarActivity extends AppCompatActivity implements LocationListene
             }
         });
 
-        textView = (TextView) findViewById(R.id.id_textViewLATLONG);
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-
-        if (acct != null) {
-            textView.setText(acct.getEmail());
-        }
 
         // Declaração para o uso da câmera
         btn_tirarfoto = findViewById(R.id.btn_tirarfoto);

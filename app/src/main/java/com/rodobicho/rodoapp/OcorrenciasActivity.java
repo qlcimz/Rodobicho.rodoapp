@@ -60,7 +60,7 @@ public class OcorrenciasActivity extends AppCompatActivity {
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
 
         if(acct != null){
-            WS_URL = "http://192.168.0.14:8081/rodobicho/ocorrencia/listarByEmail?email="+acct.getEmail();
+            WS_URL = "http://192.168.0.10:8080/rodobicho/ocorrencia/listarByEmail?email="+acct.getEmail();
             //dispara chamada assincrona para listagem no WS
             new AsyncWS().execute();
         }
